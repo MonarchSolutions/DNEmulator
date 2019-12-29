@@ -43,6 +43,7 @@ Emulating Instruction:
 Accessing Stack:
 ```C#
   var value = emulator.ValueStack.Pop();
+  var values = emulator.ValueStack.Pop(3);
   emulator.ValueStack.Push(new I4Value(0));
 ```
 
