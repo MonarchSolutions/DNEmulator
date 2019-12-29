@@ -59,6 +59,13 @@ Accessing Parameters:
   emulator.LocalMap.Set(method.Parameters[0]), new I4Value(1));
 ```
 
+Accessing Fields:
+```C#
+  IField field = ...;
+  var value = emulator.FieldMap.Get(field);
+  emulator.LocalMap.Set(field), new R8Value(1.0));
+```
+
 Events:
 ```C#
   static void Main(string[] args)
