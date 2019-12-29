@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29521.150
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNEmulator", "DNEmulator\DNEmulator.csproj", "{97964AA5-1A3C-4E7D-9F65-A8801E94F05E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNEmulator.Tests", "DNEmulator.Tests\DNEmulator.Tests.csproj", "{046196BD-104C-40CD-B75E-197374012452}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97964AA5-1A3C-4E7D-9F65-A8801E94F05E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97964AA5-1A3C-4E7D-9F65-A8801E94F05E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97964AA5-1A3C-4E7D-9F65-A8801E94F05E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97964AA5-1A3C-4E7D-9F65-A8801E94F05E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{046196BD-104C-40CD-B75E-197374012452}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{046196BD-104C-40CD-B75E-197374012452}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{046196BD-104C-40CD-B75E-197374012452}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{046196BD-104C-40CD-B75E-197374012452}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A5EBF5E4-FB26-473B-828B-AA29D8497C8F}
+	EndGlobalSection
+EndGlobal
