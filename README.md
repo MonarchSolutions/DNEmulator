@@ -40,6 +40,12 @@ Emulating Instruction:
   }
 ```
 
+Accessing Stack:
+```C#
+  var value = emulator.ValueStack.Pop();
+  emulator.ValueStack.Push(new I4Value(0));
+```
+
 Events:
 ```C#
   static void Main(string[] args)
