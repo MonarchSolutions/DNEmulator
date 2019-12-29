@@ -44,7 +44,7 @@ Events:
 ```C#
   static void Main(string[] args)
   {
-   Resolve(module);
+   var module = ModuleDefMD.Load(Assembly.GetEntryAssembly().Location);
    var emulator = new Emulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate"));
    emulator.BeforeEmulation += BeforeEmulation;
    emulator.AfterEmulation += AfterEmulation;        
