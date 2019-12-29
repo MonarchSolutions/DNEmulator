@@ -62,7 +62,7 @@ Events:
 ```
 
 # Values
-```C#
+```
   DNEmulator.Values.I4Value -> int32 value (I4)
   DNEmulator.Values.I8Value -> int64 value (I8)
   DNEmulator.Values.NativeValue -> native int value (I)
@@ -73,7 +73,7 @@ Events:
 ```
 
 # Emulation Results
-```C#
+```
   DNEmulator.EmulationResults.NormalResult -> emulation will continue
   DNEmulator.EmulationResults.JumpResult -> emulator will jump to instruction at given index
   DNEmulator.EmulationResults.ReturnResult -> emulation will end
