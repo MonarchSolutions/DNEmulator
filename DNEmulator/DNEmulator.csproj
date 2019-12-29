@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
-    <Compile Include="EmulationResult.cs" />
+    <Compile Include="Abstractions\EmulationResult.cs" />
     <Compile Include="EmulationResults\JumpResult.cs" />
     <Compile Include="EmulationResults\NormalResult.cs" />
     <Compile Include="EmulationResults\ReturnResult.cs" />

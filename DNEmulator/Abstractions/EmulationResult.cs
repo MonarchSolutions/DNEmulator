@@ -1,6 +1,6 @@
 ﻿using DNEmulator.Enumerations;
 
-namespace DNEmulator
+namespace DNEmulator.Abstractions
 {
     public abstract class EmulationResult
     {
