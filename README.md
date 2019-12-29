@@ -61,9 +61,22 @@ Events:
   }
 ```
 
+# Values
+```C#
+  DNEmulator.Values.I4Value -> int32 value (I4)
+  DNEmulator.Values.I8Value -> int64 value (I8)
+  DNEmulator.Values.NativeValue -> native int value (I)
+  DNEmulator.Values.ObjectValue -> object value (O)
+  DNEmulator.Values.StringValue -> string value (S)
+  DNEmulator.Values.R8Value -> float(32/64) value (F)
+  DNEmulator.Values.UnknownValue -> unknown value
+```
+
 # Emulation Results
 ```C#
   DNEmulator.EmulationResults.NormalResult -> emulation will continue
   DNEmulator.EmulationResults.JumpResult -> emulator will jump to instruction at given index
   DNEmulator.EmulationResults.ReturnResult -> emulation will end
 ```
+
+
