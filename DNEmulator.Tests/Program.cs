@@ -18,9 +18,9 @@ namespace DNEmulator.Tests
             var module = ModuleDefMD.Load(Assembly.GetEntryAssembly().Location);
             Resolve(module);
             _emulator = new Emulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate"));
-            _emulator.BeforeEmulation += BeforeEmulation;
-            _emulator.BeforeEmulation += OwnHandler;
-            _emulator.AfterEmulation += AfterEmulation;
+           // _emulator.BeforeEmulation += BeforeEmulation;
+           // _emulator.BeforeEmulation += OwnHandler;
+           // _emulator.AfterEmulation += AfterEmulation;
             _emulator.Emulate();
             
             if(_emulator.ValueStack.Pop() is I4Value result)
