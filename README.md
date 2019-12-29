@@ -47,6 +47,18 @@ Accessing Stack:
   emulator.ValueStack.Push(new I4Value(0));
 ```
 
+Accessing Locals:
+```C#
+  var value = emulator.LocalMap.Get(method.Body.Variables[0]);
+  emulator.LocalMap.Set(method.Body.Variables[0], new I4Value(1));
+```
+
+Accessing Parameters:
+```C#
+  var value = emulator.ParameterMap.Get(method.Parameters[0]);
+  emulator.LocalMap.Set(method.Parameters[0]), new I4Value(1));
+```
+
 Events:
 ```C#
   static void Main(string[] args)
