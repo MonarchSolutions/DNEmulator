@@ -1,7 +1,8 @@
 # DNEmulator [WIP]
 A stack emulator for the Common Intermediate Language, which follows the ECMA Standards (based on dnlib)
-Discord: https://discord.me/nre
 
+# Discord
+https://discord.me/nre
 
 # Usage
 Important namespaces:
