@@ -19,23 +19,29 @@ namespace DNEmulator.OpCodes.Branches
             bool jump;
             switch (firstValue.ValueType)
             {
-                case DNValueType.Int32:
+                case DNValueType.Int32 when secondValue.ValueType == DNValueType.Int32:
                     jump = ((I4Value)firstValue).Value != ((I4Value)secondValue).Value;
                     break;
-                case DNValueType.Int64:
+                case DNValueType.Int32 when secondValue.ValueType == DNValueType.Native:
+                    jump = ((I4Value)firstValue).Value != (long)((NativeValue)secondValue).Value;
+                    break;
+                case DNValueType.Int64 when secondValue.ValueType == DNValueType.Int64:
                     jump = ((I8Value)firstValue).Value != ((I8Value)secondValue).Value;
                     break;
-                case DNValueType.Real:
+                case DNValueType.Real when secondValue.ValueType == DNValueType.Real:
                     jump = ((R8Value)firstValue).Value != ((R8Value)secondValue).Value;
                     break;
-                case DNValueType.String:
+                case DNValueType.String when secondValue.ValueType == DNValueType.String:
                     jump = ((StringValue)firstValue).Value != ((StringValue)secondValue).Value;
                     break;
-                case DNValueType.Object:
+                case DNValueType.Object when secondValue.ValueType == DNValueType.Object:
                     jump = ((ObjectValue)firstValue).Value != ((ObjectValue)secondValue).Value;
                     break;
-                case DNValueType.Native:
+                case DNValueType.Native when secondValue.ValueType == DNValueType.Native:
                     jump = ((NativeValue)firstValue).Value != ((NativeValue)secondValue).Value;
+                    break;
+                case DNValueType.Native when secondValue.ValueType == DNValueType.Int32:
+                    jump = (long)((NativeValue)firstValue).Value != ((I4Value)secondValue).Value;
                     break;
                 default:
                     throw new InvalidILException(ctx.Instruction.ToString());
