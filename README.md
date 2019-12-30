@@ -1,6 +1,8 @@
-# DNEmulator
+# DNEmulator [WIP]
 A stack emulator for the Common Intermediate Language, which follows the ECMA Standards (based on dnlib)
 
+# Discord
+https://discord.me/nre
 
 # Usage
 Important namespaces:
@@ -16,7 +18,7 @@ Creating a new instance of the emulator:
   var emulator = new Emulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate"));   
 ```
 
-Creating a new instance of emulator with parameter values:
+Creating a new instance of the emulator with parameter values:
 ```C#
   var module = ModuleDefMD.Load(Assembly.GetEntryAssembly().Location);
   var emulator = new Emulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate"), new Value[] { new StringValue("abc"), new ObjectValue(new int[5]) });   
@@ -45,6 +47,25 @@ Accessing Stack:
   var value = emulator.ValueStack.Pop();
   var values = emulator.ValueStack.Pop(3);
   emulator.ValueStack.Push(new I4Value(0));
+```
+
+Accessing Locals:
+```C#
+  var value = emulator.LocalMap.Get(method.Body.Variables[0]);
+  emulator.LocalMap.Set(method.Body.Variables[0], new I4Value(1));
+```
+
+Accessing Parameters:
+```C#
+  var value = emulator.ParameterMap.Get(method.Parameters[0]);
+  emulator.LocalMap.Set(method.Parameters[0]), new I4Value(1));
+```
+
+Accessing Fields:
+```C#
+  IField field = ...;
+  var value = emulator.FieldMap.Get(field);
+  emulator.LocalMap.Set(field), new R8Value(1.0));
 ```
 
 Events:
