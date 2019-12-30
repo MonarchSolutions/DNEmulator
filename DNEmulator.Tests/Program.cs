@@ -19,10 +19,7 @@ namespace DNEmulator.Tests
             Resolve(module);
             _emulator = new Emulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate"));
             _emulator.BeforeEmulation += BeforeEmulation;
-            _emulator.BeforeEmulation += OwnHandler;
-            _emulator.AfterEmulation += AfterEmulation;
             _emulator.Emulate();
-            
             if(_emulator.ValueStack.Pop() is I4Value result)
                 Console.WriteLine("Emulated Result: " + result.Value);
 

@@ -16,10 +16,7 @@ namespace DNEmulator.OpCodes.Branches
             var secondValue = ctx.Stack.Pop();
             var firstValue = ctx.Stack.Pop();
 
-            if (firstValue.ValueType != secondValue.ValueType)
-                throw new InvalidILException(ctx.Instruction.ToString());
-
-            var jump = false;
+            bool jump;
             switch (firstValue.ValueType)
             {
                 case DNValueType.Int32:
@@ -40,6 +37,8 @@ namespace DNEmulator.OpCodes.Branches
                 case DNValueType.Native:
                     jump = ((NativeValue)firstValue).Value != ((NativeValue)secondValue).Value;
                     break;
+                default:
+                    throw new InvalidILException(ctx.Instruction.ToString());
             }
 
             if (jump)

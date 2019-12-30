@@ -63,8 +63,8 @@ namespace DNEmulator
             var state = EmulationState.Next;
             do
             {
-                BeforeEmulation?.Invoke(Method.Body.Instructions[_index]);
                 var instruction = Method.Body.Instructions[_index++];
+                BeforeEmulation?.Invoke(instruction);
                 var result = EmulateInstruction(instruction);
                 AfterEmulation?.Invoke(instruction);
                 state = result.State;

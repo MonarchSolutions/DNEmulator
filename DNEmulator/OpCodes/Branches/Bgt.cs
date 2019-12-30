@@ -16,20 +16,26 @@ namespace DNEmulator.OpCodes.Branches
             var secondValue = ctx.Stack.Pop();
             var firstValue = ctx.Stack.Pop();
 
-            if (firstValue.ValueType != secondValue.ValueType)
-                throw new InvalidILException(ctx.Instruction.ToString());
-
-            var jump = false;
+            bool jump;
             switch (firstValue.ValueType)
             {
-                case DNValueType.Int32:
+                case DNValueType.Int32 when secondValue.ValueType == DNValueType.Int32:
                     jump = ((I4Value)firstValue).Value > ((I4Value)secondValue).Value;
                     break;
-                case DNValueType.Int64:
+                case DNValueType.Int32 when secondValue.ValueType == DNValueType.Native:
+                    jump = ((I4Value)firstValue).Value > (long)((NativeValue)secondValue).Value;
+                    break;
+                case DNValueType.Int64 when secondValue.ValueType == DNValueType.Int64:
                     jump = ((I8Value)firstValue).Value > ((I8Value)secondValue).Value;
                     break;
-                case DNValueType.Real:
+                case DNValueType.Real when secondValue.ValueType == DNValueType.Real:
                     jump = ((R8Value)firstValue).Value > ((R8Value)secondValue).Value;
+                    break;
+                case DNValueType.Native when secondValue.ValueType == DNValueType.Native:
+                    jump = (long)((NativeValue)firstValue).Value > (long)((NativeValue)secondValue).Value;
+                    break;
+                case DNValueType.Native when secondValue.ValueType == DNValueType.Int32:
+                    jump = (long)((NativeValue)firstValue).Value > ((I4Value)secondValue).Value;
                     break;
                 default:
                     throw new InvalidILException(ctx.Instruction.ToString());
