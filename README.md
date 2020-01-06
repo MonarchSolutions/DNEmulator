@@ -1,9 +1,6 @@
 # DNEmulator [WIP]
 A stack emulator for the Common Intermediate Language, which follows the ECMA Standards (based on dnlib)
 
-# Discord
-https://discord.me/nre
-
 # Usage
 Important namespaces:
 ```C#
@@ -106,5 +103,11 @@ Events:
   DNEmulator.EmulationResults.JumpResult -> emulator will jump to instruction at given index
   DNEmulator.EmulationResults.ReturnResult -> emulation will end
 ```
+
+# Discord
+https://discord.me/nre
+
+# Credits
+0xd4d - dnlib 
 
 
