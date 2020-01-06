@@ -62,7 +62,7 @@ Accessing Fields:
 ```C#
   IField field = ...;
   var value = emulator.FieldMap.Get(field);
-  emulator.LocalMap.Set(field), new R8Value(1.0));
+  emulator.FieldMap.Set(field), new R8Value(1.0));
 ```
 
 Events:
