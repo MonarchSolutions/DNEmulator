@@ -3,6 +3,7 @@ using DNEmulator.EmulationResults;
 using DNEmulator.Enumerations;
 using DNEmulator.Exceptions;
 using DNEmulator.Maps;
+using DNEmulator.Values;
 using dnlib.DotNet;
 using dnlib.DotNet.Emit;
 using System;
@@ -78,9 +79,23 @@ namespace DNEmulator
         public EmulationResult EmulateInstruction(Instruction instruction)
         {
             var code = Simplify(instruction.OpCode.Code);
-            var opCode = _opCodeMap[code];
+            if (!_opCodeMap.TryGetValue(code, out var opCode))
+            {
+                EmulateStackBehaviour(instruction);
+                return new NormalResult();
+            }
             _context.Instruction = instruction;
             return opCode.Emulate(_context);
+        }
+
+        private void EmulateStackBehaviour(Instruction instruction)
+        {
+            instruction.CalculateStackUsage(out var pushes, out var pops);
+
+            for (var i = 0; i < pops; i++)
+                _context.Stack.Pop();
+            for (var i = 0; i < pushes; i++)
+                _context.Stack.Push(new UnknownValue(default));
         }
 
         public void Continue() => _index++;
