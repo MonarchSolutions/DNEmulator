@@ -19,13 +19,10 @@ namespace DNEmulator.OpCodes.Arithmetic
             switch (firstValue.ValueType)
             {
                 case DNValueType.Int32:
-                    ctx.Stack.Push(new I4Value(-((I4Value)firstValue).Value));
+                    ctx.Stack.Push(new I4Value(~((I4Value)firstValue).Value));
                     break;
                 case DNValueType.Int64:
-                    ctx.Stack.Push(new I8Value(-((I8Value)firstValue).Value));
-                    break;
-                case DNValueType.Native:
-                    ctx.Stack.Push(new NativeValue(new IntPtr(-(long)((NativeValue)firstValue).Value)));
+                    ctx.Stack.Push(new I8Value(~((I8Value)firstValue).Value));
                     break;
                 default:
                     throw new InvalidILException(ctx.Instruction.ToString());

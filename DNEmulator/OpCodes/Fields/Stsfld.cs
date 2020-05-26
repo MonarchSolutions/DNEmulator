@@ -14,7 +14,9 @@ namespace DNEmulator.OpCodes.Fields
         {
             var firstValue = ctx.Stack.Pop();
 
-            var field = (IField)ctx.Instruction.Operand;
+            if(!(ctx.Instruction.Operand is IField field))
+                throw new InvalidILException(ctx.Instruction.ToString());
+            
             if (!field.ResolveFieldDef().IsStatic)
                 throw new InvalidILException(ctx.Instruction.ToString());
 

@@ -14,11 +14,10 @@ namespace DNEmulator.Tests
         private static Emulator _emulator;
         static void Main(string[] args)
         {
-
             var module = ModuleDefMD.Load(Assembly.GetEntryAssembly().Location);
             Resolve(module);
             _emulator = new Emulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate"));
-            _emulator.BeforeEmulation += BeforeEmulation;
+            //_emulator.BeforeEmulation += BeforeEmulation;
             _emulator.Emulate();
             if(_emulator.ValueStack.Pop() is I4Value result)
                 Console.WriteLine("Emulated Result: " + result.Value);

@@ -14,7 +14,9 @@ namespace DNEmulator.OpCodes.Conditionals
         {
             if (!(ctx.Stack.Pop() is I4Value i4Value))
                 throw new InvalidILException(ctx.Instruction.ToString());
-            var instructions = (Instruction[])ctx.Instruction.Operand;
+
+            if (!(ctx.Instruction.Operand is Instruction[] instructions))
+                throw new InvalidILException(ctx.Instruction.ToString());
 
             if (i4Value.Value < 0 || i4Value.Value > instructions.Length)
                 return new NormalResult();

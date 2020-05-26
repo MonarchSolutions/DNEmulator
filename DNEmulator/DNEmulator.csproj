@@ -190,6 +190,7 @@
     <Compile Include="OpCodes\Misc\Dup.cs" />
     <Compile Include="OpCodes\Misc\Ldlen.cs" />
     <Compile Include="OpCodes\Misc\Ldnull.cs" />
+    <Compile Include="OpCodes\Misc\Ldobj.cs" />
     <Compile Include="OpCodes\Misc\Nop.cs" />
     <Compile Include="OpCodes\Misc\Pop.cs" />
     <Compile Include="OpCodes\Misc\Ret.cs" />

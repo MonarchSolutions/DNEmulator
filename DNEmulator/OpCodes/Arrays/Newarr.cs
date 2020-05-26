@@ -17,59 +17,61 @@ namespace DNEmulator.OpCodes.Arrays
             if (!(ctx.Stack.Pop() is I4Value count))
                 throw new InvalidILException(ctx.Instruction.ToString());
 
-            switch(((ITypeDefOrRef)ctx.Instruction.Operand).ToTypeSig().ElementType)
-            {
-                case ElementType.I:
-                    ctx.Stack.Push(new ObjectValue(new IntPtr[count.Value]));
-                    break;
-                case ElementType.U:
-                    ctx.Stack.Push(new ObjectValue(new UIntPtr[count.Value]));
-                    break;
-                case ElementType.I1:
-                    ctx.Stack.Push(new ObjectValue(new sbyte[count.Value]));
-                    break;
-                case ElementType.U1:
-                    ctx.Stack.Push(new ObjectValue(new byte[count.Value]));
-                    break;
-                case ElementType.I2:
-                    ctx.Stack.Push(new ObjectValue(new short[count.Value]));
-                    break;
-                case ElementType.U2:
-                    ctx.Stack.Push(new ObjectValue(new ushort[count.Value]));
-                    break;
-                case ElementType.I4:
-                    ctx.Stack.Push(new ObjectValue(new int[count.Value]));
-                    break;
-                case ElementType.U4:
-                    ctx.Stack.Push(new ObjectValue(new uint[count.Value]));
-                    break;
-                case ElementType.I8:
-                    ctx.Stack.Push(new ObjectValue(new long[count.Value]));
-                    break;
-                case ElementType.U8:
-                    ctx.Stack.Push(new ObjectValue(new ulong[count.Value]));
-                    break;
-                case ElementType.R4:
-                    ctx.Stack.Push(new ObjectValue(new float[count.Value]));
-                    break;
-                case ElementType.R8:
-                    ctx.Stack.Push(new ObjectValue(new double[count.Value]));
-                    break;
-                case ElementType.String:
-                    ctx.Stack.Push(new ObjectValue(new string[count.Value]));
-                    break;
-                case ElementType.Char:
-                    ctx.Stack.Push(new ObjectValue(new char[count.Value]));
-                    break;
-                case ElementType.Boolean:
-                    ctx.Stack.Push(new ObjectValue(new bool[count.Value]));
-                    break;
-                case ElementType.Object:
-                    ctx.Stack.Push(new ObjectValue(new object[count.Value]));
-                    break;
-            }
+            if (!(ctx.Instruction.Operand is ITypeDefOrRef typeDefOrRef))
+                throw new InvalidILException(ctx.Instruction.ToString());
+
+            ctx.Stack.Push(new ObjectValue(GetArray(typeDefOrRef.ToTypeSig(), count.Value)));
+           
 
             return new NormalResult();
+        }
+
+
+        private static Array GetArray(TypeSig typeSignature, int count)
+        {
+            switch(typeSignature.ElementType)
+            {
+                case ElementType.I:
+                    return new IntPtr[count];
+                case ElementType.U:
+                    return new UIntPtr[count];
+                case ElementType.I1:
+                    return new sbyte[count];
+                case ElementType.U1:
+                    return new byte[count];
+                case ElementType.I2:
+                    return new short[count];
+                case ElementType.U2:
+                    return new ushort[count];
+                case ElementType.I4:
+                    return new int[count];
+                case ElementType.U4:
+                    return new uint[count];
+                case ElementType.I8:
+                    return new long[count];
+                case ElementType.U8:
+                    return new ulong[count];
+                case ElementType.R4:
+                    return new float[count];
+                case ElementType.R8:
+                    return new double[count];
+                case ElementType.String:
+                    return new string[count];
+                case ElementType.Char:
+                    return new char[count];
+                case ElementType.Boolean:
+                    return new bool[count];
+                case ElementType.Object:
+                    return new object[count];
+                case ElementType.SZArray:
+                case ElementType.Array:
+                    var type = Type.GetType(typeSignature.FullName + "[]");
+                    if (type == null)
+                        return null;
+                    return Array.CreateInstance(type, count);
+            }
+
+            return null;
         }
     }
 }

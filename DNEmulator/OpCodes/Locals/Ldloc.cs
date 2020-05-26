@@ -1,5 +1,6 @@
 ﻿using DNEmulator.Abstractions;
 using DNEmulator.EmulationResults;
+using DNEmulator.Exceptions;
 using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Locals
@@ -10,7 +11,10 @@ namespace DNEmulator.OpCodes.Locals
 
         public EmulationResult Emulate(Context ctx)
         {
-            ctx.Stack.Push(ctx.Emulator.LocalMap.Get((Local)ctx.Instruction.Operand));
+            if (!(ctx.Instruction.Operand is Local local))
+                throw new InvalidILException(ctx.Instruction.ToString());
+
+            ctx.Stack.Push(ctx.Emulator.LocalMap.Get(local));
             return new NormalResult();
         }
     }

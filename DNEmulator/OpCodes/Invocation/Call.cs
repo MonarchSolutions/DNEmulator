@@ -1,5 +1,6 @@
 ﻿using DNEmulator.Abstractions;
 using DNEmulator.EmulationResults;
+using DNEmulator.Exceptions;
 using dnlib.DotNet;
 using dnlib.DotNet.Emit;
 using System.Linq;
@@ -12,9 +13,13 @@ namespace DNEmulator.OpCodes.Invocation
 
         public EmulationResult Emulate(Context ctx)
         {
-            var method = ((IMethod)ctx.Instruction.Operand).ResolveMethodDef();
+            if (!(ctx.Instruction.Operand is IMethod iMethod))
+                throw new InvalidILException(ctx.Instruction.ToString());
+
+            var method = (iMethod is MethodDef methodDef) ? methodDef : iMethod.ResolveMethodDef();
             var emulator = new Emulator(method, ctx.Stack.Pop(method.Parameters.Count).Reverse());
             emulator.Emulate();
+
             if (method.ReturnType.ElementType != ElementType.Void)
                 ctx.Stack.Push(emulator.ValueStack.Pop());
 

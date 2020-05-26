@@ -22,10 +22,10 @@ namespace DNEmulator.OpCodes.Branches
                     jump = ((I4Value)firstValue).Value == 1;
                     break;
                 case DNValueType.String:
-                    jump = ((StringValue)firstValue).Value == null;
+                    jump = ((StringValue)firstValue).Value != null;
                     break;
                 case DNValueType.Object:
-                    jump = ((ObjectValue)firstValue).Value == null;
+                    jump = ((ObjectValue)firstValue).Value != null;
                     break;
                 default:
                     throw new InvalidILException(ctx.Instruction.ToString());

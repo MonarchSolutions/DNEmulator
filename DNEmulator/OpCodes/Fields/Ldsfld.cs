@@ -12,7 +12,9 @@ namespace DNEmulator.OpCodes.Fields
 
         public EmulationResult Emulate(Context ctx)
         {
-            var field = (IField)ctx.Instruction.Operand;
+            if(!(ctx.Instruction.Operand is IField field))
+                throw new InvalidILException(ctx.Instruction.ToString());
+
             if (!field.ResolveFieldDef().IsStatic)
                 throw new InvalidILException(ctx.Instruction.ToString());
 
