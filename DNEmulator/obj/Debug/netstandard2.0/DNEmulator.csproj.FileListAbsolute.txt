@@ -1,9 +1,0 @@
-C:\Users\lool\source\repos\DNEmulator\DNEmulator\bin\Debug\netstandard2.0\DNEmulator.deps.json
-C:\Users\lool\source\repos\DNEmulator\DNEmulator\bin\Debug\netstandard2.0\DNEmulator.dll
-C:\Users\lool\source\repos\DNEmulator\DNEmulator\bin\Debug\netstandard2.0\DNEmulator.pdb
-C:\Users\lool\source\repos\DNEmulator\DNEmulator\obj\Debug\netstandard2.0\DNEmulator.csprojAssemblyReference.cache
-C:\Users\lool\source\repos\DNEmulator\DNEmulator\obj\Debug\netstandard2.0\DNEmulator.AssemblyInfoInputs.cache
-C:\Users\lool\source\repos\DNEmulator\DNEmulator\obj\Debug\netstandard2.0\DNEmulator.AssemblyInfo.cs
-C:\Users\lool\source\repos\DNEmulator\DNEmulator\obj\Debug\netstandard2.0\DNEmulator.csproj.CoreCompileInputs.cache
-C:\Users\lool\source\repos\DNEmulator\DNEmulator\obj\Debug\netstandard2.0\DNEmulator.dll
-C:\Users\lool\source\repos\DNEmulator\DNEmulator\obj\Debug\netstandard2.0\DNEmulator.pdb
