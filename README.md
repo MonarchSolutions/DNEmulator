@@ -12,7 +12,7 @@ Important namespaces:
 Creating a new instance of the emulator:
 ```C#
   var module = ModuleDefMD.Load(Assembly.GetEntryAssembly().Location);
-  var emulator = new Emulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate"));   
+  var emulator = new CILEmulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate"));   
 ```
 
 Creating a new instance of the emulator with parameter values:
