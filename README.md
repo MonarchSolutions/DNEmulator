@@ -21,7 +21,7 @@ Creating a new instance of the emulator with parameter values:
   var emulator = new CILEmulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate"), new Value[] { new ObjectValue("abc"), new ObjectValue(new int[5]) });   
 ```
 
-By using the instantiations given above, the emulator will not support dynamic opcodes. To support dynamic opcodes we need to create a new dynamic context and pass it as parameter to "CILEmulator":
+By using the instantiations given above, the emulator will not support dynamic opcodes. Dynamic opcodes are opcodes which require loading of runtime assemblies or execution of parts of them. To support dynamic opcodes we need to create a new dynamic context and pass it as parameter to "CILEmulator":
 ```C#
   System.Reflection.Assembly assembly = ...;
   var dynamicContext = new DynamicContext(assembly);
