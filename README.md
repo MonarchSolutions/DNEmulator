@@ -21,7 +21,7 @@ Creating a new instance of the emulator with parameter values:
   var emulator = new CILEmulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate"), new Value[] { new StringValue("abc"), new ObjectValue(new int[5]) });   
 ```
 
-By using the instantiations given above, the emulator will not support dynamic OpCodes. To support dynamic opcodes we need to declare a new dynamic context and pass it as parameter to "CILEmulator":
+By using the instantiations given above, the emulator will not support dynamic opcodes. To support dynamic opcodes we need to declare a new dynamic context and pass it as parameter to "CILEmulator":
 ```C#
   var dynamicContext = new DynamicContext(assembly);
   var emulator = new CILEmulator(..., dynamicContext);
@@ -33,7 +33,7 @@ Or creating a dynamic context by using a loader:
   var dynamicContext = new DynamicContext(assemblyLoader);
 ```
 
-Load the Assembly by using the Constructor of "DynamicContext" or by using the "Load" Functions:
+Load the Assembly by using the constructor of "DynamicContext" or by using the "Load" Functions:
 ```C#
   DynamicContext dynamicContext = ...;
   byte[] assemblyBytes = ...;
@@ -42,7 +42,7 @@ Load the Assembly by using the Constructor of "DynamicContext" or by using the "
   dynamicContext.Load(assemblyPath);
 ```
 
-It will allow invocation by default. However you can disallow invocation by setting the flag in the Constructor or by setting the "AllowInvocation" flag to "false"
+It will allow invocation by default. However you can disallow invocation by setting the flag in the constructor or by setting the "AllowInvocation" flag to "false"
 ```C#
   DynamicContext dynamicContext = ...;
   dynamicContext.AllowInvocation = false;
