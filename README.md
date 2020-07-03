@@ -134,7 +134,7 @@ Events:
 # Dynamic Loaders
 ```
   DNEmulator.Dynamic.NETCore.NETCoreAssemblyLoader -> is able to load every .NET Core Assembly
-  DNEmulator.Dynamic.NETCore.NETCoreAssemblyLoader -> is able to load every .NET Framework Assembly
+  DNEmulator.Dynamic.NETCore.NETFrameworkAssemblyLoader -> is able to load every .NET Framework Assembly
   DNEmulator.Abstractions.IAssemblyLoader -> provides methods that every assembly loader should have and makes it possible to create own custom assembly loaders
 ```
 
