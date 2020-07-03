@@ -27,7 +27,7 @@ By using the instantiations given above, the emulator will not support dynamic o
   var emulator = new CILEmulator(..., dynamicContext);
 ```
 
-Or creating a dynamic context by using a loader:
+Or create a dynamic context by using a loader:
 ```C#
   IAssemblyLoader assemblyLoader = ...;
   var dynamicContext = new DynamicContext(assemblyLoader);
