@@ -1,5 +1,4 @@
 ﻿using DNEmulator.Abstractions;
-using DNEmulator.Exceptions;
 using DNEmulator.Values;
 using dnlib.DotNet;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ namespace DNEmulator.Maps
     {
         public ParameterMap(ParameterList parameters, IEnumerable<Value> parameterValues)
         {
-            for (var i = 0; i < parameters.Count; i++)
+            for (int i = 0; i < parameters.Count; i++)
             {
                 var parameter = parameters[i];
                 _values.Add(parameter, parameterValues == null ? new UnknownValue(parameter.Type.ElementType) : parameterValues.ElementAt(i));

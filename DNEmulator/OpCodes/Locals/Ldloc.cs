@@ -5,11 +5,12 @@ using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Locals
 {
-    public class Ldloc : IOpCode
+    public class Ldloc : OpCodeEmulator
     {
-        public Code Code => Code.Ldloc;
+        public override Code Code => Code.Ldloc;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             if (!(ctx.Instruction.Operand is Local local))
                 throw new InvalidILException(ctx.Instruction.ToString());

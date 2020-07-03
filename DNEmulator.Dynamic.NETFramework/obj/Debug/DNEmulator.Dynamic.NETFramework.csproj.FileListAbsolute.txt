@@ -1,0 +1,9 @@
+C:\Users\lool\source\repos\DNEmulator\DNEmulator.Dynamic.NETFramework\bin\Debug\DNEmulator.Dynamic.NETFramework.dll
+C:\Users\lool\source\repos\DNEmulator\DNEmulator.Dynamic.NETFramework\bin\Debug\DNEmulator.Dynamic.NETFramework.pdb
+C:\Users\lool\source\repos\DNEmulator\DNEmulator.Dynamic.NETFramework\bin\Debug\DNEmulator.dll
+C:\Users\lool\source\repos\DNEmulator\DNEmulator.Dynamic.NETFramework\bin\Debug\DNEmulator.pdb
+C:\Users\lool\source\repos\DNEmulator\DNEmulator.Dynamic.NETFramework\obj\Debug\DNEmulator.Dynamic.NETFramework.csprojAssemblyReference.cache
+C:\Users\lool\source\repos\DNEmulator\DNEmulator.Dynamic.NETFramework\obj\Debug\DNEmulator.Dynamic.NETFramework.csproj.CoreCompileInputs.cache
+C:\Users\lool\source\repos\DNEmulator\DNEmulator.Dynamic.NETFramework\obj\Debug\DNEmulator.Dynamic.NETFramework.csproj.CopyComplete
+C:\Users\lool\source\repos\DNEmulator\DNEmulator.Dynamic.NETFramework\obj\Debug\DNEmulator.Dynamic.NETFramework.dll
+C:\Users\lool\source\repos\DNEmulator\DNEmulator.Dynamic.NETFramework\obj\Debug\DNEmulator.Dynamic.NETFramework.pdb

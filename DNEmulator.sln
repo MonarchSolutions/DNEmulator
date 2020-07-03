@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29521.150
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNEmulator", "DNEmulator\DNEmulator.csproj", "{97964AA5-1A3C-4E7D-9F65-A8801E94F05E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DNEmulator", "DNEmulator\DNEmulator.csproj", "{D894E22A-E165-4E1A-A737-0D7094185262}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNEmulator.Tests", "DNEmulator.Tests\DNEmulator.Tests.csproj", "{046196BD-104C-40CD-B75E-197374012452}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DNEmulator.Dynamic.NETCore", "DNEmulator.Dynamic.NETCore\DNEmulator.Dynamic.NETCore.csproj", "{6CC6C8F2-8D6B-4E3B-9D7D-4E08B40CFE21}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DNEmulator.Tests", "DNEmulator.Tests\DNEmulator.Tests.csproj", "{39109508-4122-488C-ACC9-AC032CEFEEDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNEmulator.Dynamic.NETFramework", "DNEmulator.Dynamic.NETFramework\DNEmulator.Dynamic.NETFramework.csproj", "{054939FB-6C77-45D9-A93B-DA61FC326962}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{97964AA5-1A3C-4E7D-9F65-A8801E94F05E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97964AA5-1A3C-4E7D-9F65-A8801E94F05E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97964AA5-1A3C-4E7D-9F65-A8801E94F05E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97964AA5-1A3C-4E7D-9F65-A8801E94F05E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{046196BD-104C-40CD-B75E-197374012452}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{046196BD-104C-40CD-B75E-197374012452}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{046196BD-104C-40CD-B75E-197374012452}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{046196BD-104C-40CD-B75E-197374012452}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D894E22A-E165-4E1A-A737-0D7094185262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D894E22A-E165-4E1A-A737-0D7094185262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D894E22A-E165-4E1A-A737-0D7094185262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D894E22A-E165-4E1A-A737-0D7094185262}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CC6C8F2-8D6B-4E3B-9D7D-4E08B40CFE21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CC6C8F2-8D6B-4E3B-9D7D-4E08B40CFE21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CC6C8F2-8D6B-4E3B-9D7D-4E08B40CFE21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CC6C8F2-8D6B-4E3B-9D7D-4E08B40CFE21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39109508-4122-488C-ACC9-AC032CEFEEDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39109508-4122-488C-ACC9-AC032CEFEEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39109508-4122-488C-ACC9-AC032CEFEEDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39109508-4122-488C-ACC9-AC032CEFEEDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{054939FB-6C77-45D9-A93B-DA61FC326962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{054939FB-6C77-45D9-A93B-DA61FC326962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{054939FB-6C77-45D9-A93B-DA61FC326962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{054939FB-6C77-45D9-A93B-DA61FC326962}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

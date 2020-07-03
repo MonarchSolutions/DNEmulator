@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "mclxUlhu+KDPAbOktw6LLtKyvaPHl8tqIZXM790t7ZJfC5OqtOZ06PZnGQd6L3tVx2AkSu8fIy+v2qbF+Je0oQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\lool\\source\\repos\\DNEmulator\\DNEmulator.Dynamic.NETCore\\DNEmulator.Dynamic.NETCore.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lool\\.nuget\\packages\\dnlib\\3.3.2\\dnlib.3.3.2.nupkg.sha512",
+    "C:\\Users\\lool\\.nuget\\packages\\microsoft.extensions.dependencymodel\\3.1.5\\microsoft.extensions.dependencymodel.3.1.5.nupkg.sha512",
+    "C:\\Users\\lool\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
+    "C:\\Users\\lool\\.nuget\\packages\\system.reflection.emit.lightweight\\4.7.0\\system.reflection.emit.lightweight.4.7.0.nupkg.sha512",
+    "C:\\Users\\lool\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
+  ],
+  "logs": []
+}

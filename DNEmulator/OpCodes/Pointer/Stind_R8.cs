@@ -6,17 +6,18 @@ using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Pointer
 {
-    public class Stind_R8 : IOpCode
+    public class Stind_R8 : OpCodeEmulator
     {
-        public Code Code => Code.Stind_R8;
+        public override Code Code => Code.Stind_R8;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public unsafe EmulationResult Emulate(Context ctx)
+        public override unsafe EmulationResult Emulate(Context ctx)
         {
             var value = ctx.Stack.Pop();
             var address = ctx.Stack.Pop();
 
             if (!(value is R8Value r8Value && address is NativeValue nativeValue))
-                throw new InvalidILException(ctx.Instruction.ToString());
+                throw new InvalidStackException();
 
             *(double*)nativeValue.Value = r8Value.Value;
 

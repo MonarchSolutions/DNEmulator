@@ -1,5 +1,4 @@
 ﻿using DNEmulator.Abstractions;
-using DNEmulator.Enumerations;
 
 namespace DNEmulator.Values
 {
@@ -7,11 +6,14 @@ namespace DNEmulator.Values
     {
         public override DNValueType ValueType => DNValueType.Int32;
 
-        public int Value { get; }
-
         public I4Value(int value)
         {
             Value = value;
+        }
+
+        public int Value
+        {
+            get;
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using DNEmulator.Abstractions;
-using DNEmulator.Enumerations;
+
 
 namespace DNEmulator.EmulationResults
 {

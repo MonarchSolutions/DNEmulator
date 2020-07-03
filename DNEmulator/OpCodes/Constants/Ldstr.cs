@@ -5,13 +5,14 @@ using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Constants
 {
-    public class Ldstr : IOpCode
+    public class Ldstr : OpCodeEmulator
     {
-        public Code Code => Code.Ldstr;
+        public override Code Code => Code.Ldstr;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
-            ctx.Stack.Push(new StringValue((string)ctx.Instruction.Operand));
+            ctx.Stack.Push(new ObjectValue((string)ctx.Instruction.Operand));
             return new NormalResult();
         }
     }

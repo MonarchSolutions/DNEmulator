@@ -1,5 +1,5 @@
 ﻿using DNEmulator.Abstractions;
-using DNEmulator.Enumerations;
+
 
 namespace DNEmulator.EmulationResults
 {
@@ -7,10 +7,14 @@ namespace DNEmulator.EmulationResults
     {
         public override EmulationState State => EmulationState.Jump;
 
-        public int Index { get; }
         public JumpResult(int index)
         {
             Index = index;
         }
+        public int Index
+        {
+            get;
+        }
+
     }
 }

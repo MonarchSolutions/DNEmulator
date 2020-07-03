@@ -9,14 +9,15 @@ using System.Runtime.InteropServices;
 
 namespace DNEmulator.OpCodes.Misc
 {
-    public class Ldobj : IOpCode
+    public class Ldobj : OpCodeEmulator
     {
-        public Code Code => Code.Ldobj;
+        public override Code Code => Code.Ldobj;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             if (!(ctx.Stack.Pop() is NativeValue address))
-                throw new InvalidILException(ctx.Instruction.ToString());
+                throw new InvalidStackException();
 
             if (!(ctx.Instruction.Operand is ITypeDefOrRef typeDefOrRef))
                 throw new InvalidILException(ctx.Instruction.ToString());

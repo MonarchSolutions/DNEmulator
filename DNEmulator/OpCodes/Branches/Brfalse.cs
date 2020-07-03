@@ -1,34 +1,32 @@
 ﻿using DNEmulator.Abstractions;
 using DNEmulator.EmulationResults;
-using DNEmulator.Enumerations;
+
 using DNEmulator.Exceptions;
 using DNEmulator.Values;
 using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Branches
 {
-    public class Brfalse : IOpCode
+    public class Brfalse : OpCodeEmulator
     {
-        public Code Code => Code.Brfalse;
+        public override Code Code => Code.Brfalse;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             var firstValue = ctx.Stack.Pop();
 
             bool jump;
-            switch(firstValue.ValueType)
+            switch (firstValue.ValueType)
             {
                 case DNValueType.Int32:
                     jump = ((I4Value)firstValue).Value == 0;
-                    break;
-                case DNValueType.String:
-                    jump = ((StringValue)firstValue).Value == null;
                     break;
                 case DNValueType.Object:
                     jump = ((ObjectValue)firstValue).Value == null;
                     break;
                 default:
-                    throw new InvalidILException(ctx.Instruction.ToString());
+                    throw new InvalidStackException();
             }
 
             if (jump)

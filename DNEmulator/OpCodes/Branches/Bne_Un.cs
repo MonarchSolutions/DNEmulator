@@ -1,17 +1,18 @@
 ﻿using DNEmulator.Abstractions;
 using DNEmulator.EmulationResults;
-using DNEmulator.Enumerations;
+
 using DNEmulator.Exceptions;
 using DNEmulator.Values;
 using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Branches
 {
-    public class Bne_Un : IOpCode
+    public class Bne_Un : OpCodeEmulator
     {
-        public Code Code => Code.Bne_Un;
+        public override Code Code => Code.Bne_Un;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             var secondValue = ctx.Stack.Pop();
             var firstValue = ctx.Stack.Pop();
@@ -31,9 +32,6 @@ namespace DNEmulator.OpCodes.Branches
                 case DNValueType.Real when secondValue.ValueType == DNValueType.Real:
                     jump = ((R8Value)firstValue).Value != ((R8Value)secondValue).Value;
                     break;
-                case DNValueType.String when secondValue.ValueType == DNValueType.String:
-                    jump = ((StringValue)firstValue).Value != ((StringValue)secondValue).Value;
-                    break;
                 case DNValueType.Object when secondValue.ValueType == DNValueType.Object:
                     jump = ((ObjectValue)firstValue).Value != ((ObjectValue)secondValue).Value;
                     break;
@@ -44,7 +42,7 @@ namespace DNEmulator.OpCodes.Branches
                     jump = (long)((NativeValue)firstValue).Value != ((I4Value)secondValue).Value;
                     break;
                 default:
-                    throw new InvalidILException(ctx.Instruction.ToString());
+                    throw new InvalidStackException();
             }
 
             if (jump)

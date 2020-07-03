@@ -5,11 +5,12 @@ using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Constants
 {
-    public class Ldc_I4_4 : IOpCode
+    public class Ldc_I4_4 : OpCodeEmulator
     {
-        public Code Code => Code.Ldc_I4_4;
+        public override Code Code => Code.Ldc_I4_4;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             ctx.Stack.Push(new I4Value(4));
             return new NormalResult();

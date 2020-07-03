@@ -6,13 +6,14 @@ using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Fields
 {
-    public class Ldsfld : IOpCode
+    public class Ldsfld : OpCodeEmulator
     {
-        public Code Code => Code.Ldsfld;
+        public override Code Code => Code.Ldsfld;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
-            if(!(ctx.Instruction.Operand is IField field))
+            if (!(ctx.Instruction.Operand is IField field))
                 throw new InvalidILException(ctx.Instruction.ToString());
 
             if (!field.ResolveFieldDef().IsStatic)

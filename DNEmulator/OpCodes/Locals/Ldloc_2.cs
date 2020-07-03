@@ -4,11 +4,12 @@ using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Locals
 {
-    public class Ldloc_2 : IOpCode
+    public class Ldloc_2 : OpCodeEmulator
     {
-        public Code Code => Code.Ldloc_2;
+        public override Code Code => Code.Ldloc_2;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             ctx.Stack.Push(ctx.Emulator.LocalMap.Get(ctx.Emulator.Method.Body.Variables[2]));
             return new NormalResult();

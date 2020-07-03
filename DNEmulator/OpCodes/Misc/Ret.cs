@@ -4,11 +4,12 @@ using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Misc
 {
-    public class Ret : IOpCode
+    public class Ret : OpCodeEmulator
     {
-        public Code Code => Code.Ret;
+        public override Code Code => Code.Ret;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             return new ReturnResult();
         }

@@ -8,14 +8,15 @@ using System;
 
 namespace DNEmulator.OpCodes.Misc
 {
-    public class Ckfinite : IOpCode
+    public class Ckfinite : OpCodeEmulator
     {
-        public Code Code => Code.Ckfinite;
+        public override Code Code => Code.Ckfinite;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             if (!(ctx.Stack.Pop() is R8Value r8Value))
-                throw new InvalidILException(ctx.Instruction.ToString());
+                throw new InvalidStackException();
 
             if (double.IsNaN(r8Value.Value) || double.IsInfinity(r8Value.Value))
                 throw new ArithmeticException();

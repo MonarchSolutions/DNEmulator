@@ -1,5 +1,6 @@
 ﻿using DNEmulator.Abstractions;
 using DNEmulator.EmulationResults;
+
 using DNEmulator.Exceptions;
 using DNEmulator.Values;
 using dnlib.DotNet;
@@ -8,20 +9,21 @@ using System;
 
 namespace DNEmulator.OpCodes.Arrays
 {
-    public class Newarr : IOpCode
+    public class Newarr : OpCodeEmulator
     {
-        public Code Code => Code.Newarr;
+        public override Code Code => Code.Newarr;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             if (!(ctx.Stack.Pop() is I4Value count))
-                throw new InvalidILException(ctx.Instruction.ToString());
+                throw new InvalidStackException();
 
             if (!(ctx.Instruction.Operand is ITypeDefOrRef typeDefOrRef))
                 throw new InvalidILException(ctx.Instruction.ToString());
 
             ctx.Stack.Push(new ObjectValue(GetArray(typeDefOrRef.ToTypeSig(), count.Value)));
-           
+
 
             return new NormalResult();
         }
@@ -29,7 +31,7 @@ namespace DNEmulator.OpCodes.Arrays
 
         private static Array GetArray(TypeSig typeSignature, int count)
         {
-            switch(typeSignature.ElementType)
+            switch (typeSignature.ElementType)
             {
                 case ElementType.I:
                     return new IntPtr[count];

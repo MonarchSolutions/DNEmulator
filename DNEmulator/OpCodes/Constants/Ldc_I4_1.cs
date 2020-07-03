@@ -1,15 +1,17 @@
 ﻿using DNEmulator.Abstractions;
 using DNEmulator.EmulationResults;
+
 using DNEmulator.Values;
 using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Constants
 {
-    public class Ldc_I4_1 : IOpCode
+    public class Ldc_I4_1 : OpCodeEmulator
     {
-        public Code Code => Code.Ldc_I4_1;
+        public override Code Code => Code.Ldc_I4_1;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             ctx.Stack.Push(new I4Value(1));
             return new NormalResult();

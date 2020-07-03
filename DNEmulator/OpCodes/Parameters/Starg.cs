@@ -5,11 +5,12 @@ using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Parameters
 {
-    public class Starg : IOpCode
+    public class Starg : OpCodeEmulator
     {
-        public Code Code => Code.Starg;
+        public override Code Code => Code.Starg;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             ctx.Emulator.ParameterMap.Set((Parameter)ctx.Instruction.Operand, ctx.Stack.Pop());
             return new NormalResult();

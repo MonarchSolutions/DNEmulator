@@ -1,5 +1,5 @@
 ﻿using DNEmulator.Abstractions;
-using DNEmulator.Enumerations;
+
 
 namespace DNEmulator.Values
 {
@@ -7,10 +7,14 @@ namespace DNEmulator.Values
     {
         public override DNValueType ValueType => DNValueType.Object;
 
-        public object Value { get; }
         public ObjectValue(object value)
         {
             Value = value;
+        }
+
+        public object Value
+        {
+            get;
         }
     }
 }

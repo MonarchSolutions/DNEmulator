@@ -1,17 +1,18 @@
 ﻿using DNEmulator.Abstractions;
 using DNEmulator.EmulationResults;
-using DNEmulator.Enumerations;
+
 using DNEmulator.Exceptions;
 using DNEmulator.Values;
 using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Conditionals
 {
-    public class Clt_Un : IOpCode
+    public class Clt_Un : OpCodeEmulator
     {
-        public Code Code => Code.Clt_Un;
+        public override Code Code => Code.Clt_Un;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             var secondValue = ctx.Stack.Pop();
             var firstValue = ctx.Stack.Pop();
@@ -38,7 +39,7 @@ namespace DNEmulator.OpCodes.Conditionals
                     statement = (ulong)((NativeValue)firstValue).Value < (uint)((I4Value)secondValue).Value;
                     break;
                 default:
-                    throw new InvalidILException(ctx.Instruction.ToString());
+                    throw new InvalidStackException();
             }
             ctx.Stack.Push((statement) ? new I4Value(1) : new I4Value(0));
             return new NormalResult();

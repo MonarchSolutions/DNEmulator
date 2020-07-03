@@ -6,14 +6,15 @@ using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Pointer
 {
-    public class Ldind_U4 : IOpCode
+    public class Ldind_U4 : OpCodeEmulator
     {
-        public Code Code => Code.Ldind_U4;
+        public override Code Code => Code.Ldind_U4;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public unsafe EmulationResult Emulate(Context ctx)
+        public override unsafe EmulationResult Emulate(Context ctx)
         {
             if (!(ctx.Stack.Pop() is NativeValue nativeValue))
-                throw new InvalidILException(ctx.Instruction.ToString());
+                throw new InvalidStackException();
 
             ctx.Stack.Push(new I4Value((int)*(uint*)nativeValue.Value));
 

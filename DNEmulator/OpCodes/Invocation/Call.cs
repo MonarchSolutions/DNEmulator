@@ -7,17 +7,18 @@ using System.Linq;
 
 namespace DNEmulator.OpCodes.Invocation
 {
-    public class Call : IOpCode
+    public class Call : OpCodeEmulator
     {
-        public Code Code => Code.Call;
+        public override Code Code => Code.Call;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             if (!(ctx.Instruction.Operand is IMethod iMethod))
                 throw new InvalidILException(ctx.Instruction.ToString());
 
             var method = (iMethod is MethodDef methodDef) ? methodDef : iMethod.ResolveMethodDef();
-            var emulator = new Emulator(method, ctx.Stack.Pop(method.Parameters.Count).Reverse());
+            var emulator = new CILEmulator(method, ctx.Stack.Pop(method.Parameters.Count).Reverse());
             emulator.Emulate();
 
             if (method.ReturnType.ElementType != ElementType.Void)

@@ -1,5 +1,5 @@
 ﻿using DNEmulator.Abstractions;
-using DNEmulator.Enumerations;
+
 
 namespace DNEmulator.Values
 {
@@ -7,10 +7,14 @@ namespace DNEmulator.Values
     {
         public override DNValueType ValueType => DNValueType.Real;
 
-        public double Value { get; }
         public R8Value(double value)
         {
             Value = value;
         }
+        public double Value
+        {
+            get;
+        }
+
     }
 }

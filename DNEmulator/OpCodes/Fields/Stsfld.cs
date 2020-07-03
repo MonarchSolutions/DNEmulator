@@ -6,17 +6,18 @@ using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Fields
 {
-    public class Stsfld : IOpCode
+    public class Stsfld : OpCodeEmulator
     {
-        public Code Code => Code.Stsfld;
+        public override Code Code => Code.Stsfld;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             var firstValue = ctx.Stack.Pop();
 
-            if(!(ctx.Instruction.Operand is IField field))
+            if (!(ctx.Instruction.Operand is IField field))
                 throw new InvalidILException(ctx.Instruction.ToString());
-            
+
             if (!field.ResolveFieldDef().IsStatic)
                 throw new InvalidILException(ctx.Instruction.ToString());
 

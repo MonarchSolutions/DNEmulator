@@ -1,17 +1,18 @@
 ﻿using DNEmulator.Abstractions;
 using DNEmulator.EmulationResults;
-using DNEmulator.Enumerations;
+
 using DNEmulator.Exceptions;
 using DNEmulator.Values;
 using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Conversions
 {
-    public class Conv_U8 : IOpCode
+    public class Conv_U8 : OpCodeEmulator
     {
-        public Code Code => Code.Conv_U8;
+        public override Code Code => Code.Conv_U8;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             var firstValue = ctx.Stack.Pop();
 
@@ -27,7 +28,7 @@ namespace DNEmulator.OpCodes.Conversions
                     ctx.Stack.Push(new I8Value((long)(ulong)((R8Value)firstValue).Value));
                     break;
                 default:
-                    throw new InvalidILException(ctx.Instruction.ToString());
+                    throw new InvalidStackException();
             }
 
             return new NormalResult();

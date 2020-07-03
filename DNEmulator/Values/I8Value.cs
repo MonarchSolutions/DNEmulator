@@ -1,5 +1,5 @@
 ﻿using DNEmulator.Abstractions;
-using DNEmulator.Enumerations;
+
 
 namespace DNEmulator.Values
 {
@@ -7,11 +7,15 @@ namespace DNEmulator.Values
     {
         public override DNValueType ValueType => DNValueType.Int64;
 
-        public long Value { get; }
-
         public I8Value(long value)
         {
             Value = value;
         }
+
+        public long Value
+        {
+            get;
+        }
+
     }
 }

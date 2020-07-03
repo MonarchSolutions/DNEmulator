@@ -3,20 +3,20 @@ using DNEmulator.EmulationResults;
 using DNEmulator.Exceptions;
 using DNEmulator.Values;
 using dnlib.DotNet.Emit;
-using System;
 
 namespace DNEmulator.OpCodes.Pointer
 {
-    public class Ldind_I : IOpCode
+    public class Ldind_I : OpCodeEmulator
     {
-        public Code Code => Code.Ldind_I;
+        public override Code Code => Code.Ldind_I;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public unsafe EmulationResult Emulate(Context ctx)
+        public override unsafe EmulationResult Emulate(Context ctx)
         {
             if (!(ctx.Stack.Pop() is NativeValue nativeValue))
-                throw new InvalidILException(ctx.Instruction.ToString());
+                throw new InvalidStackException();
 
-            ctx.Stack.Push(new NativeValue((IntPtr)nativeValue.Value));
+            ctx.Stack.Push(new NativeValue(nativeValue.Value));
 
             return new NormalResult();
         }

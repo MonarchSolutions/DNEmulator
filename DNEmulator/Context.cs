@@ -1,19 +1,28 @@
-﻿using DNEmulator.Abstractions;
-using dnlib.DotNet.Emit;
-using System.Collections.Generic;
+﻿using dnlib.DotNet.Emit;
 
 namespace DNEmulator
 {
     public class Context
     {
-        public ValueStack Stack { get; }
-        public Emulator Emulator { get; }
-        public Instruction Instruction { get; set; }
-
-        public Context(Emulator emulator)
+        public Context(CILEmulator emulator)
         {
             Emulator = emulator;
             Stack = emulator.ValueStack;
+        }
+
+        public ValueStack Stack
+        {
+            get;
+        }
+        public CILEmulator Emulator
+        {
+            get;
+        }
+
+        public Instruction Instruction
+        {
+            get;
+            set;
         }
     }
 }

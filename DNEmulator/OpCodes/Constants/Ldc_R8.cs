@@ -5,11 +5,12 @@ using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Constants
 {
-    public class Ldc_R8 : IOpCode
+    public class Ldc_R8 : OpCodeEmulator
     {
-        public Code Code => Code.Ldc_R8;
+        public override Code Code => Code.Ldc_R8;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             ctx.Stack.Push(new R8Value((double)ctx.Instruction.Operand));
             return new NormalResult();

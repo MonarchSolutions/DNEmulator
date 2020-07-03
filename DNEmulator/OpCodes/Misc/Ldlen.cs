@@ -1,6 +1,6 @@
 ﻿using DNEmulator.Abstractions;
 using DNEmulator.EmulationResults;
-using DNEmulator.Enumerations;
+
 using DNEmulator.Exceptions;
 using DNEmulator.Values;
 using dnlib.DotNet.Emit;
@@ -8,20 +8,21 @@ using System;
 
 namespace DNEmulator.OpCodes.Misc
 {
-    public class Ldlen : IOpCode
+    public class Ldlen : OpCodeEmulator
     {
-        public Code Code => Code.Ldlen;
+        public override Code Code => Code.Ldlen;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
-            var firstValue = ctx.Stack.Pop();
-            switch(firstValue.ValueType)
+            var value = ctx.Stack.Pop();
+            switch (value.ValueType)
             {
-                case DNValueType.Object when ((ObjectValue)firstValue).Value is Array array:
+                case DNValueType.Object when ((ObjectValue)value).Value is Array array:
                     ctx.Stack.Push(new I4Value(array.Length));
                     break;
-                case DNValueType.String:
-                    ctx.Stack.Push(new I4Value(((StringValue)firstValue).Value.Length));
+                case DNValueType.Object when ((ObjectValue)value).Value is string @string:
+                    ctx.Stack.Push(new I4Value(@string.Length));
                     break;
                 default:
                     throw new InvalidILException(ctx.Instruction.ToString());

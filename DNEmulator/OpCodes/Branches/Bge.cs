@@ -1,17 +1,18 @@
 ﻿using DNEmulator.Abstractions;
 using DNEmulator.EmulationResults;
-using DNEmulator.Enumerations;
+
 using DNEmulator.Exceptions;
 using DNEmulator.Values;
 using dnlib.DotNet.Emit;
 
 namespace DNEmulator.OpCodes.Branches
 {
-    public class Bge : IOpCode
+    public class Bge : OpCodeEmulator
     {
-        public Code Code => Code.Bge;
+        public override Code Code => Code.Bge;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+        public override EmulationResult Emulate(Context ctx)
         {
             var secondValue = ctx.Stack.Pop();
             var firstValue = ctx.Stack.Pop();
@@ -38,7 +39,7 @@ namespace DNEmulator.OpCodes.Branches
                     jump = (long)((NativeValue)firstValue).Value >= ((I4Value)secondValue).Value;
                     break;
                 default:
-                    throw new InvalidILException(ctx.Instruction.ToString());
+                    throw new InvalidStackException();
             }
 
             if (jump)

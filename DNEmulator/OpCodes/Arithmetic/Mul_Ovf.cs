@@ -1,6 +1,6 @@
 ﻿using DNEmulator.Abstractions;
 using DNEmulator.EmulationResults;
-using DNEmulator.Enumerations;
+
 using DNEmulator.Exceptions;
 using DNEmulator.Values;
 using dnlib.DotNet.Emit;
@@ -8,17 +8,16 @@ using System;
 
 namespace DNEmulator.OpCodes.Arithmetic
 {
-    public class Mul_Ovf : IOpCode
+    public class Mul_Ovf : OpCodeEmulator
     {
-        public Code Code => Code.Mul_Ovf;
+        public override Code Code => Code.Mul_Ovf;
+        public override EmulationRequirements Requirements => EmulationRequirements.None;
 
-        public EmulationResult Emulate(Context ctx)
+
+        public override EmulationResult Emulate(Context ctx)
         {
             var secondValue = ctx.Stack.Pop();
             var firstValue = ctx.Stack.Pop();
-
-            if (firstValue.ValueType != secondValue.ValueType)
-                throw new InvalidILException(ctx.Instruction.ToString());
 
             checked
             {
@@ -40,7 +39,7 @@ namespace DNEmulator.OpCodes.Arithmetic
                         ctx.Stack.Push(new NativeValue(new IntPtr((long)((NativeValue)firstValue).Value * ((I4Value)secondValue).Value)));
                         break;
                     default:
-                        throw new InvalidILException(ctx.Instruction.ToString());
+                        throw new InvalidStackException();
                 }
             }
 

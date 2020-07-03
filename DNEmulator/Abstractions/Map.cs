@@ -10,10 +10,10 @@ namespace DNEmulator.Abstractions
 
         public Value Get(IVariable variable)
         {
-            if (!_values.ContainsKey(variable))
+            if (!_values.TryGetValue(variable, out var value))
                 throw new NotInRangeException(variable.ToString());
 
-            return _values[variable];
+            return value;
         }
 
         public void Set(IVariable variable, Value value)

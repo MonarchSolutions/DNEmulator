@@ -1,7 +1,6 @@
 ﻿
 
 using DNEmulator.Abstractions;
-using DNEmulator.Enumerations;
 using System;
 
 namespace DNEmulator.Values
@@ -10,12 +9,15 @@ namespace DNEmulator.Values
     {
         public override DNValueType ValueType => DNValueType.Native;
 
-        public IntPtr Value { get; }
-
         public NativeValue(IntPtr value)
         {
             Value = value;
         }
-         
+
+        public IntPtr Value
+        {
+            get;
+        }
+
     }
 }
