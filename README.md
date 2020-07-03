@@ -23,6 +23,7 @@ Creating a new instance of the emulator with parameter values:
 
 By using the instantiations given above, the emulator will not support dynamic opcodes. To support dynamic opcodes we need to create a new dynamic context and pass it as parameter to "CILEmulator":
 ```C#
+  System.Reflection.Assembly assembly = ...;
   var dynamicContext = new DynamicContext(assembly);
   var emulator = new CILEmulator(..., dynamicContext);
 ```
