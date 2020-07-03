@@ -18,12 +18,13 @@ Creating a new instance of the emulator:
 Creating a new instance of the emulator with parameter values:
 ```C#
   var module = ModuleDefMD.Load(Assembly.GetEntryAssembly().Location);
-  var emulator = new Emulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate"), new Value[] { new StringValue("abc"), new ObjectValue(new int[5]) });   
+  var emulator = new CILEmulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate"), new Value[] { new StringValue("abc"), new ObjectValue(new int[5]) });   
 ```
 
-By using the instantiations given above, the emulator will not support dynamic OpCodes. To support dynamic opcodes we need to declare a new dynamic context:
+By using the instantiations given above, the emulator will not support dynamic OpCodes. To support dynamic opcodes we need to declare a new dynamic context and pass it as parameter to "CILEmulator":
 ```C#
   var dynamicContext = new DynamicContext(assembly);
+  var emulator = new CILEmulator(..., dynamicContext);
 ```
 
 Or creating a dynamic context by using a loader:
@@ -51,7 +52,7 @@ It will allow invocation by default. However you can disallow invocation by sett
 Emulating Method:
 ```C#
   var module = ModuleDefMD.Load(Assembly.GetEntryAssembly().Location);
-  var emulator = new Emulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate")); 
+  var emulator = new CILEmulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate")); 
   emulator.Emulate();
 ```
 
@@ -59,7 +60,7 @@ Emulating Instruction:
 ```C#
   var module = ModuleDefMD.Load(Assembly.GetEntryAssembly().Location);
   var method = module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate");
-  var emulator = new Emulator(method); 
+  var emulator = new CILEmulator(method); 
   foreach(var instruction in method.Body.Instructions)
   {
      var result = emulator.EmulateInstruction(instruction);
@@ -97,7 +98,7 @@ Events:
   static void Main(string[] args)
   {
      var module = ModuleDefMD.Load(Assembly.GetEntryAssembly().Location);
-     var emulator = new Emulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate"));
+     var emulator = new CILEmulator(module.FindNormal("DNEmulator.Tests.Program").FindMethod("ToEmulate"));
      emulator.BeforeEmulation += BeforeEmulation;
      emulator.AfterEmulation += AfterEmulation;        
   }
