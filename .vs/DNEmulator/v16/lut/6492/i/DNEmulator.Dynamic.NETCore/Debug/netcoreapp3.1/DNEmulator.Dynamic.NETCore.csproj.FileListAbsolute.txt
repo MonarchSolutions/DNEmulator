@@ -1,7 +1,0 @@
-C:\Users\lool\source\repos\DNEmulator\.vs\DNEmulator\v16\lut\0\b\DNEmulator.Dynamic.NETCore\Debug\netcoreapp3.1\DNEmulator.Dynamic.NETCore.deps.json
-C:\Users\lool\source\repos\DNEmulator\.vs\DNEmulator\v16\lut\0\b\DNEmulator.Dynamic.NETCore\Debug\netcoreapp3.1\DNEmulator.Dynamic.NETCore.dll
-C:\Users\lool\source\repos\DNEmulator\.vs\DNEmulator\v16\lut\0\i\DNEmulator.Dynamic.NETCore\Debug\netcoreapp3.1\DNEmulator.Dynamic.NETCore.csprojAssemblyReference.cache
-C:\Users\lool\source\repos\DNEmulator\.vs\DNEmulator\v16\lut\0\i\DNEmulator.Dynamic.NETCore\Debug\netcoreapp3.1\DNEmulator.Dynamic.NETCore.AssemblyInfoInputs.cache
-C:\Users\lool\source\repos\DNEmulator\.vs\DNEmulator\v16\lut\0\i\DNEmulator.Dynamic.NETCore\Debug\netcoreapp3.1\DNEmulator.Dynamic.NETCore.AssemblyInfo.cs
-C:\Users\lool\source\repos\DNEmulator\.vs\DNEmulator\v16\lut\0\i\DNEmulator.Dynamic.NETCore\Debug\netcoreapp3.1\DNEmulator.Dynamic.NETCore.csproj.CopyComplete
-C:\Users\lool\source\repos\DNEmulator\.vs\DNEmulator\v16\lut\0\i\DNEmulator.Dynamic.NETCore\Debug\netcoreapp3.1\DNEmulator.Dynamic.NETCore.dll
